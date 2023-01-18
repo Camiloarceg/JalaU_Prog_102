@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
 
-# ask for hours
-hours = input('Please enter the number of hours: ')
-hours = int(hours)
-#ask for rate
-rate = input('Please enter the rate for the employee: ')
-rate = int(rate)
 
-# calculate employee's payment
-if hours <= 40:
-    payment = (hours * rate)  
-else:
-    payment = hours * rate + (hours - 40) * rate * 0.5
-print(f"Employee's payment is: {payment}")
+def calculate_pay(hours, rate, employee):
+    # calculate employee's payment
+    if hours <= 40:
+        payment = hours * rate
+    else:
+        payment = hours * rate + (hours - 40) * rate * 0.5
+    print(f"{employee} payment is: {payment}")
+
+
+with open("employees.csv") as file:
+    # get all employees without the header of the CSV file
+    for line in file.readlines()[1:]:
+        words = line.strip().split(",")
+
+        if words[0] != "":
+            words[2].replace(".", ",")
+            calculate_pay(float(words[1]), float(words[2]), words[0])
+    # print(words)
