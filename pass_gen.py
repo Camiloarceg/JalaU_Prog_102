@@ -53,7 +53,9 @@ def get_password(path, app_name):
             if app_name.lower() == row[0]:
                 # return the decoded password
                 encoded_password = row[1].replace("'", "").replace("b", "")
-                decoded_password = base64.b64decode(encoded_password.strip()).decode("utf-8")
+                decoded_password = base64.b64decode(encoded_password.strip()).decode(
+                    "utf-8"
+                )
                 return decoded_password
 
 
@@ -124,7 +126,7 @@ if __name__ == "__main__":
     path = "passwords.csv"
 
     if not os.path.exists(path):
-        with open(path, 'w') as csv_file:
+        with open(path, "w") as csv_file:
             # creating a csv writer object
             csv_writer = csv.writer(csv_file)
             # writing the fields
@@ -160,3 +162,6 @@ if __name__ == "__main__":
             char_num = character_assignation()
             password = generate_password(char_num)
             add_password(app_name, password, path)
+        exit_code = input("If you want to exit excecution 1 to continue type 2 :")
+        if exit_code == "1":
+            break
