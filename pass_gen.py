@@ -52,7 +52,7 @@ def get_password(path, app_name):
             # found the matching app
             if app_name.lower() == row[0]:
                 # return the decoded password
-                encoded_password = row[1].replace("'", "").replace("b", "")
+                encoded_password = row[1].replace("'", "").replace("b", "", 1)
                 decoded_password = base64.b64decode(encoded_password.strip()).decode(
                     "utf-8"
                 )
