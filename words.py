@@ -7,8 +7,6 @@ opts.add_option("-f", "--file", dest='fname', help="This is the file name that y
 opts.add_option("-w", "--word", dest='word', help="This is the word that you would like to search")
 
 (options, arguments) = opts.parse_args()
-print(options.fname)
-print(options.word)
 
 count = 0
 with open(str(options.fname), "r") as f:
