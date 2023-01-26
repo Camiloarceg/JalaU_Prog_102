@@ -27,11 +27,13 @@ with open(str(options.fname), "r") as f:
             index = list(line)[21]
             break
     # count 11 points and then validate if next char is index
-    for line in lines:
+    for i, line in enumerate(lines):
         point_count = 0
         for char in line:
             if point_count == 11:
-                if char is index:
-                    print(line.strip())
-            if char is ".":
+                if char == index:
+                    print(char)
+                    print(f"{i}   {line.strip()}")
+            if char == ".":
+                print(char)
                 point_count += 1
